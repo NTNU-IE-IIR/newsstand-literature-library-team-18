@@ -18,5 +18,6 @@ public class Main
     {
         ApplicationUI appUI = new ApplicationUI();
         appUI.start();
+        // appUI.start();
     }
 }
