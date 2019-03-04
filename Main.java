@@ -5,6 +5,8 @@
  * 
  * @author asty
  * @version 1.0
+ * 
+ * RANDOM KOMMENTAR
  */
 public class Main 
 {
