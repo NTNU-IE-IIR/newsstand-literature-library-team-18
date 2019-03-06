@@ -46,7 +46,7 @@ public class Register
             }
         }
         
-        if (!string.isBlank())
+        if (!string.isEmpty())
         {
             return string;
         }
