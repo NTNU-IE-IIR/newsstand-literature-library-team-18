@@ -23,7 +23,6 @@ public class Register
      * @return bookRegister as array list.
      */
     public ArrayList<Book> getBookRegister() {
-
         return bookRegister;
     }
 
@@ -31,7 +30,6 @@ public class Register
      * @param book add the book to the book register (ArrayList).
      */
     public void add(Book book) {
-
         bookRegister.add(book);
     }
     
@@ -54,50 +52,45 @@ public class Register
     
     /**
      * List all books in the book register on the terminal.
+     * @return bookList list of the titles of all the books
      */
     public String listAllBooks() {
         String bookList = "";
         
         for(Book book:bookRegister) {
-            bookList = bookList + book.getTitle() + "\n";
+            bookList += book.getTitle() + "\n";
         }
         return bookList;
     }
     
     /**
-     * @param bookName put in the name of the book you want to find from the array list "bookRegister".
+     * @param searchString put in the string of the book you want to search for 
+     * from the array list "bookRegister".
      * List all books that contains the name you sent in.
+     * @return bookFound
      */
-    public String searchByName(String bookName) {
+    public String searchByName(String searchString) {
         boolean foundBook = false;
-        String bookFound = "";
+        String searchResult = "";
         
         for(Book book:bookRegister) {
-            if(book.getTitle().contains(bookName)) {
-                bookFound = bookFound + (
-                "The book title is: " + book.getTitle() 
+            if(book.getTitle().contains(searchString) || book.getAuthor().contains(searchString) ||
+            book.getGenre().contains(searchString)) {
+                searchResult += "The book title is: " + book.getTitle() 
                 + ". The book genre is: " + book.getGenre() 
-                + ". The book author is: " + book.getAuthor())
+                + ". The book author is: " + book.getAuthor()
                 + "\n";
                 foundBook = true;
             }
         }
         
         if(!foundBook){
-                bookFound = ("No book with the name: " + bookName + " found.");
+                searchResult = ("No book with the name: " + searchString + " found.");
             }
-        return bookFound;
+        return searchResult;
     }
     
-    public void generateTestBooks() {
-      Book book1 = new Book("Hello World!", "Comedy", "Alan Turing");
-      Book book2 = new Book("Kua sier Møø", "Horror", "Harry Potter");
-      Book book3 = new Book("Runescape wiki", "Non-Fiction", "Everyone");
-      Book book4 = new Book("Hello my little friend", "Science fiction", "Lisa Simpson");
-      
-      add(book1);
-      add(book2);
-      add(book3);
-      add(book4);
+    public int getArrayLength() {
+        return bookRegister.size();
     }
 }
