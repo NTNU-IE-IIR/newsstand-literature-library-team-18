@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
- * Write a description of class Register here.
+ * This class is to make a register for readable's such as books with "ArrayList".
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Group 18
+ * @version 1.1
  */
 public class Register
 {
@@ -17,57 +18,77 @@ public class Register
     public Register() {
         this.bookRegister = new ArrayList<>();
     }
+    
+    /**
+     * @return bookRegister as array list.
+     */
+    public ArrayList<Book> getBookRegister() {
+
+        return bookRegister;
+    }
 
     /**
-     * @param bookName add the book to the book register (ArrayList).
+     * @param book add the book to the book register (ArrayList).
      */
-    public void addBook(Book bookName) {
-        bookRegister.add(bookName);
+    public void add(Book book) {
+
+        bookRegister.add(book);
     }
     
     /**
-     * @param bookName remove the book from the book register (ArrayList).
+     * @param objectToBeRemoved remove the book from the book register (ArrayList).
+     * @return true if object was successfully removed.
      */
-    public void removeBook(Book bookName) {
-        bookRegister.remove(bookName);
+    public boolean removeBook(String objectToBeRemoved) {
+        boolean isBookRemoved = false;
+        Iterator<Book> it = bookRegister.iterator();
+        
+        while(it.hasNext()) {
+            if(it.next().getTitle().equals(objectToBeRemoved)) {
+                it.remove();
+                isBookRemoved = true;
+            }
+        }
+        return isBookRemoved;
     }
     
     /**
      * List all books in the book register on the terminal.
+     * @return bookList list of the titles of all the books
      */
-    public void listAllBooks() {
-        int index = 0;
+    public String listAllBooks() {
+        String bookList = "";
         
-        System.out.println("The books you have:");
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            System.out.println(book.getBookTitle());
-            index++;
+        for(Book book:bookRegister) {
+            bookList += book.getTitle() + "\n";
         }
+        return bookList;
     }
     
     /**
-     * @param bookName put in the name of the book you want to find from the array list "bookRegister".
+     * @param searchString put in the string of the book you want to search for 
+     * from the array list "bookRegister".
      * List all books that contains the name you sent in.
+     * @return bookFound
      */
-    public void searchOnBook(String bookName) {
-        int index = 0;
+    public String searchByName(String searchString) {
         boolean foundBook = false;
+        String searchResult = "";
         
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            
-            if(book.getBookTitle().contains(bookName)) {
-                System.out.println("The book title is: " + book.getBookTitle() + ". The book genre is: " + book.getGenre() + ". The book author is: " + book.getAuthor());
+        for(Book book:bookRegister) {
+            if(book.getTitle().contains(searchString) || book.getAuthor().contains(searchString) ||
+            book.getGenre().contains(searchString)) {
+                searchResult += "The book title is: " + book.getTitle() 
+                + ". The book genre is: " + book.getGenre() 
+                + ". The book author is: " + book.getAuthor()
+                + "\n";
                 foundBook = true;
             }
-            
-            index++;
         }
         
-        if((index == bookRegister.size()) && (foundBook == false)){
-                System.out.println("No book with the name: " + bookName + " found.");
+        if(!foundBook){
+                searchResult = ("No book with the name: " + searchString + " found.");
             }
+        return searchResult;
     }
 }
-

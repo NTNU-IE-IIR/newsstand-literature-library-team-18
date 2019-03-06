@@ -1,8 +1,10 @@
+
 /**
- * Write a description of class Book here.
+ * This class has the job to hold on a object book.
+ * In this class you should be avaible to set book title, genre and author.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Group 18
+ * @version 0.1
  */
 public class Book
 {
@@ -12,6 +14,7 @@ public class Book
 
     /**
      * Constructor for objects of class Book
+     * 
      */
     public Book(String bookTitle, String genre, String author) {
         this.bookTitle = bookTitle;
@@ -20,30 +23,10 @@ public class Book
     }
 
     /**
-     * @param bookTitle update the book title.
-     */
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
-    }
-
-    /**
-     * @param genre update the genre of the book.
-     */
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    /**
-     * @param author update the author of the book.
-     */
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    /**
      * @return the title of the book.
      */
-    public String getBookTitle() {
+    public String getTitle() {
+
         return this.bookTitle;
     }
 
@@ -51,6 +34,7 @@ public class Book
      * @return the genre of the book.
      */
     public String getGenre() {
+
         return this.genre;
     }
 
@@ -58,6 +42,7 @@ public class Book
      * @return the author of the book.
      */
     public String getAuthor() {
+
         return this.author;
     }
 }
