@@ -5,8 +5,6 @@
  * 
  * @author asty
  * @version 1.0
- * 
- * RANDOM KOMMENTAR
  */
 public class Main 
 {
@@ -18,6 +16,5 @@ public class Main
     {
         ApplicationUI appUI = new ApplicationUI();
         appUI.start();
-        // appUI.start();
     }
 }
