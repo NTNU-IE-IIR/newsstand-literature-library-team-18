@@ -1,73 +1,91 @@
 import java.util.ArrayList;
 
 /**
- * Write a description of class Register here.
+ * This is the class of the registers
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Brage Tranvik
+ * @version 2019-03-05
  */
 public class Register
 {
-    // instance variables - replace the example below with your own
-    private ArrayList<Book> bookRegister;
+    private ArrayList<Book> bookArrayList;
 
     /**
      * Constructor for objects of class Register
      */
-    public Register() {
-        this.bookRegister = new ArrayList<>();
+    public Register()
+    {
+        bookArrayList = new ArrayList<>();
+    }
+  
+    /**
+     * Adds a book to the bookArrayList
+     * @param book The book you want to add
+     */
+    public void addBook(Book book)
+    {
+        bookArrayList.add(book);
     }
 
     /**
-     * @param bookName add the book to the book register (ArrayList).
+     * Search the bookArrayList by title
+     * @param searchString Tile you're looking for
      */
-    public void addBook(Book bookName) {
-        bookRegister.add(bookName);
-    }
-    
-    /**
-     * @param bookName remove the book from the book register (ArrayList).
-     */
-    public void removeBook(Book bookName) {
-        bookRegister.remove(bookName);
-    }
-    
-    /**
-     * List all books in the book register on the terminal.
-     */
-    public void listAllBooks() {
-        int index = 0;
+    public String searchBooks(String searchString)
+    {
+        String string = "";
+        String errorString = "ERROR: No search results.";
         
-        System.out.println("The books you have:");
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            System.out.println(book.getBookTitle());
-            index++;
+        for (Book book : bookArrayList)
+        {
+            if (book.getTitle().contains(searchString) || book.getAuthor().contains(searchString) ||
+            book.getGenre().contains(searchString))
+            {
+                string += "Title: " + book.getTitle() + ", " + "Author: " + book.getAuthor() +
+                ", " + "Genre: " + book.getGenre() + "\n";
+            }
+        }
+        
+        if (!string.isBlank())
+        {
+            return string;
+        }
+        else
+        {
+            return errorString;
+        }
+    }
+
+    /**
+     * List all books in the bookArrayList
+     * @return string The titles as a string
+     */
+    public String listAllBooks()
+    {
+        String string = "";
+        String errorString = "ERROR: No books found.";
+        if (!bookArrayList.isEmpty())
+        {
+            for (Book book : bookArrayList)
+            {
+                string += "Title: " + book.getTitle() + ", " + "Author: " + book.getAuthor() +
+                ", " + "Genre: " + book.getGenre() + "\n";
+                // return book.getTitle()
+            }
+            return string;
+        }
+        else
+        {
+            return errorString;
         }
     }
     
     /**
-     * @param bookName put in the name of the book you want to find from the array list "bookRegister".
-     * List all books that contains the name you sent in.
+     * Remove a book from the bookArrayList
+     * @param book The book you want to remove
      */
-    public void searchOnBook(String bookName) {
-        int index = 0;
-        boolean foundBook = false;
-        
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            
-            if(book.getBookTitle().contains(bookName)) {
-                System.out.println("The book title is: " + book.getBookTitle() + ". The book genre is: " + book.getGenre() + ". The book author is: " + book.getAuthor());
-                foundBook = true;
-            }
-            
-            index++;
-        }
-        
-        if((index == bookRegister.size()) && (foundBook == false)){
-                System.out.println("No book with the name: " + bookName + " found.");
-            }
+    public void removeBook(Book book)
+    {
+        bookArrayList.remove(book);
     }
 }
-

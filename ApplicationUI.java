@@ -1,7 +1,6 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+//update
 /**
  * Makes up the user interface (text based) of the application.
  * Responsible for all user interaction, like displaying the menu
@@ -12,22 +11,24 @@ import java.util.Scanner;
  */
 public class ApplicationUI 
 {
+    private Register bookRegister;
 
-   
     // The menu tha will be displayed. Please edit/alter the menu
     // to fit your application (i.e. replace "prodct" with "litterature"
     // etc.
     private String[] menuItems = {
-        "1. List all products",
-        "2. Add new product",
-        "3. Find a product by name",
-    };
+            "1. List all products",
+            "2. Add new product",
+            "3. Find a product by name",
+        };
+
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
      */
     public ApplicationUI() 
     {
+        bookRegister = new Register();
     }
 
     /**
@@ -46,23 +47,23 @@ public class ApplicationUI
             {
                 int menuSelection = this.showMenu();
                 switch (menuSelection) 
-                {
+                {   
                     case 1:
-                        this.listAllProducts();
-                        break;
+                    this.listAllProducts();
+                    break;
 
                     case 2:
-                        this.addNewProduct();
-                        break;
+                    this.addNewProduct();
+                    break;
 
                     case 3:
-                        this.findProductByName();
-                        break;
+                    this.findProductByName();
+                    break;
 
                     case 4:
-                        System.out.println("\nThank you for using Application v0.1. Bye!\n");
-                        quit = true;
-                        break;
+                    System.out.println("\nThank you for using Application v0.1. Bye!\n");
+                    quit = true;
+                    break;
 
                     default:
                 }
@@ -71,8 +72,7 @@ public class ApplicationUI
             {
                 System.out.println("\nERROR: Please provide a number between 1 and " + this.menuItems.length + "..\n");
             }
-        }        
-        
+        }
     }
 
     /**
@@ -105,10 +105,10 @@ public class ApplicationUI
         }
         return menuSelection;
     }
-    
+
     // ------ The methods below this line are "helper"-methods, used from the menu ----
     // ------ All these methods are made privat, since they are only used by the menu ---
-    
+
     /**
      * Initializes the application.
      * Typically you would create the LiteratureRegistrer-instance here
@@ -123,24 +123,30 @@ public class ApplicationUI
      */
     void listAllProducts()
     {
-        System.out.println("listAllProducts() was called");
+        System.out.println("You have the following books:");
+        System.out.println(bookRegister.listAllBooks());
     }
 
-    
     /**
-     * Add a new product/literature to the register.
-     * In this method you have to add code to ask the
-     * user for the necessary information you need to 
-     * create an instance of the product, which you
-     * then send as a parameter to the addNewspaper()-
-     * method of the register.
-     * Remember to also handle invalid input from the
-     * user!!
+     * Add a new new book to the bookRegister
      */
     void addNewProduct()
     {
-        System.out.println("addNewProduct() was called");
-        
+        String newTitle = "";
+        String newGenre = "";
+        String newAuthor = "";
+
+        // String userInput = "";
+        Scanner scan = new Scanner(System.in).useDelimiter("\n");
+
+        System.out.println("Enter the title of the book");
+        newTitle = scan.next();
+        System.out.println("Enter the author of the book");
+        newAuthor = scan.next();
+        System.out.println("Enter the genre of the book");
+        newGenre = scan.next();
+
+        bookRegister.addBook(new Book(newTitle, newAuthor, newGenre));
     }
 
     /**
@@ -154,7 +160,14 @@ public class ApplicationUI
      */
     void findProductByName()
     {
-        System.out.println("findProductByName() was called");
+        // System.out.println("findProductByName() was called");
+        String searchString = "";
+        Scanner scan = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Enter the search term:");
+        searchString = scan.next();
+
+        System.out.println("We have the following books:");
+        System.out.println(bookRegister.searchBooks(searchString));
+
     }
-    
 }

@@ -1,13 +1,19 @@
 #BlueJ class context
 comment0.target=Register
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Register\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ the\ class\ of\ the\ registers\r\n\r\n\ @author\ Brage\ Tranvik\r\n\ @version\ 2019-03-05\r\n
 comment1.params=
 comment1.target=Register()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Register\r\n
-comment2.params=
-comment2.target=void\ listAllBooks()
-comment2.text=\r\n\ List\ all\ books\ in\ the\ book\ register\ on\ the\ terminal.\r\n
-comment3.params=bookName
-comment3.target=void\ searchOnBook(java.lang.String)
-comment3.text=\r\n\ @param\ bookName\ put\ in\ the\ name\ of\ the\ book\ you\ want\ to\ find\ from\ the\ array\ list\ "bookRegister".\r\n\ List\ all\ books\ that\ contains\ the\ name\ you\ sent\ in.\r\n
-numComments=4
+comment2.params=book
+comment2.target=void\ addBook(Book)
+comment2.text=\r\n\ Adds\ a\ book\ to\ the\ bookArrayList\r\n\ @param\ book\ The\ book\ you\ want\ to\ add\r\n
+comment3.params=searchString
+comment3.target=java.lang.String\ searchBooks(java.lang.String)
+comment3.text=\r\n\ Search\ the\ bookArrayList\ by\ title\r\n\ @param\ searchString\ Tile\ you're\ looking\ for\r\n
+comment4.params=
+comment4.target=java.lang.String\ listAllBooks()
+comment4.text=\r\n\ List\ all\ books\ in\ the\ bookArrayList\r\n\ @return\ string\ The\ titles\ as\ a\ string\r\n
+comment5.params=book
+comment5.target=void\ removeBook(Book)
+comment5.text=\r\n\ Remove\ a\ book\ from\ the\ bookArrayList\r\n\ @param\ book\ The\ book\ you\ want\ to\ remove\r\n
+numComments=6

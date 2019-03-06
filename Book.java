@@ -1,63 +1,85 @@
+
 /**
- * Write a description of class Book here.
+ * This a class for books containg the values
+ * title, author and genre.
+ * Methods are included for accessing and setting
+ * these values.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Brage Tranvik
+ * @version 2019-03-05
  */
 public class Book
 {
-    private String genre;
-    private String bookTitle;
+    private String title;
     private String author;
+    private String genre;
 
     /**
      * Constructor for objects of class Book
+     * @param title Title of the book
+     * @param author Author of the book
+     * @param genre Genre of the book
      */
-    public Book(String bookTitle, String genre, String author) {
-        this.bookTitle = bookTitle;
-        this.genre = genre;
+    public Book(String title, String author, String genre)
+    {
+        this.title = title;
         this.author = author;
-    }
-
-    /**
-     * @param bookTitle update the book title.
-     */
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
-    }
-
-    /**
-     * @param genre update the genre of the book.
-     */
-    public void setGenre(String genre) {
         this.genre = genre;
     }
-
+   
+    // --ACCESSORS--
     /**
-     * @param author update the author of the book.
+     * Method that sets the title of the book
+     * @param title Title of the book
      */
-    public void setAuthor(String author) {
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+    
+    /**
+     * Method that sets the author of the book
+     * @param author Author of the book
+     */
+    public void setAuthor(String author)
+    {
         this.author = author;
     }
-
+    
     /**
-     * @return the title of the book.
+     * Method that sets the genre of the book
+     * @param genre Genre of the book
      */
-    public String getBookTitle() {
-        return this.bookTitle;
+    public void setGenre(String genre)
+    {
+        this.genre = genre;
     }
-
+    
+    // --MUTATORS--
     /**
-     * @return the genre of the book.
+     * Method that returns the title of the book
+     * @return title Title of the book 
      */
-    public String getGenre() {
-        return this.genre;
+    public String getTitle()
+    {
+        return title;
     }
-
+    
     /**
-     * @return the author of the book.
+     * Method that returns the author of the book
+     * @return author Author of the book 
      */
-    public String getAuthor() {
-        return this.author;
+    public String getAuthor()
+    {
+        return author;
+    }
+    
+    /**
+     * Method that returns the genre of the book
+     * @return grenre Genre of the book 
+     */
+    public String getGenre()
+    {
+        return genre;
     }
 }
