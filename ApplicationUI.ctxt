@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ApplicationUI
-comment0.text=\r\n\ Makes\ up\ the\ user\ interface\ (text\ based)\ of\ the\ application.\r\n\ Responsible\ for\ all\ user\ interaction,\ like\ displaying\ the\ menu\r\n\ and\ receiving\ input\ from\ the\ user.\r\n\ \r\n\ @author\ asty\r\n\ @version\ 1.1\r\n
+comment0.text=\r\n\ Makes\ up\ the\ user\ interface\ (text\ based)\ of\ the\ application.\r\n\ Responsible\ for\ all\ user\ interaction,\ like\ displaying\ the\ menu\r\n\ and\ receiving\ input\ from\ the\ user.\r\n\ \r\n\ @author\ asty\r\n\ @version\ 1.1.\r\n
 comment1.params=
 comment1.target=ApplicationUI()
 comment1.text=\r\n\ Creates\ an\ instance\ of\ the\ ApplicationUI\ User\ interface.\ \r\n

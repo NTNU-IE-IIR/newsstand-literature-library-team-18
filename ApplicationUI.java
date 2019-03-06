@@ -7,7 +7,7 @@ import java.util.Scanner;
  * and receiving input from the user.
  * 
  * @author asty
- * @version 1.1
+ * @version 1.1.
  */
 public class ApplicationUI {
 

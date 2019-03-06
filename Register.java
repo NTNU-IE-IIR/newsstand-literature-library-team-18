@@ -5,7 +5,7 @@ import java.util.Iterator;
  * This class is to make a register for readable's such as books with "ArrayList".
  *
  * @author Group 18
- * @version 1.1
+ * @version 1.1.
  */
 public class Register
 {

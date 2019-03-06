@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The test class BookTest.
+ * The test class BookTest..
  *
  * @author  (your name)
  * @version (a version number or a date)

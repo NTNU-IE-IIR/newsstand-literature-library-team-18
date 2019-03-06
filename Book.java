@@ -4,7 +4,7 @@
  * In this class you should be avaible to set book title, genre and author.
  *
  * @author Group 18
- * @version 0.1
+ * @version 0.1.
  */
 public class Book
 {
