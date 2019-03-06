@@ -10,34 +10,34 @@ import java.util.Scanner;
  * @author asty
  * @version 1.0
  */
-public class ApplicationUI 
-{
+public class ApplicationUI {
 
-   
     // The menu tha will be displayed. Please edit/alter the menu
     // to fit your application (i.e. replace "prodct" with "litterature"
     // etc.
     private String[] menuItems = {
-        "1. List all products",
-        "2. Add new product",
-        "3. Find a product by name",
-    };
+            "1. List all products",
+            "2. Add new product",
+            "3. Remove an existing product (BROKEN DON'T USE)",
+            "4. Find a product by name",
+        };
+
+    private Register bookRegister;
+    private Scanner reader;
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
      */
-    public ApplicationUI() 
-    {
+    public ApplicationUI() {
+        this.bookRegister = new Register();
+        this.reader = new Scanner(System.in);
     }
 
     /**
      * Starts the application by showing the menu and retrieving input from the
      * user.
      */
-    public void start() 
-    {
-        this.init();
-
+    public void start() {
         boolean quit = false;
 
         while (!quit) 
@@ -48,21 +48,25 @@ public class ApplicationUI
                 switch (menuSelection) 
                 {
                     case 1:
-                        this.listAllProducts();
-                        break;
+                    this.listAllProducts();
+                    break;
 
                     case 2:
-                        this.addNewProduct();
-                        break;
-
+                    this.addNewProduct();
+                    break;
+                    
                     case 3:
-                        this.findProductByName();
-                        break;
+                    //this.removeExistingProduct();
+                    break;
 
                     case 4:
-                        System.out.println("\nThank you for using Application v0.1. Bye!\n");
-                        quit = true;
-                        break;
+                    this.findProductByName();
+                    break;
+
+                    case 5:
+                    System.out.println("\nThank you for using Application v0.1. Bye!\n");
+                    quit = true;
+                    break;
 
                     default:
                 }
@@ -72,7 +76,6 @@ public class ApplicationUI
                 System.out.println("\nERROR: Please provide a number between 1 and " + this.menuItems.length + "..\n");
             }
         }        
-        
     }
 
     /**
@@ -84,20 +87,17 @@ public class ApplicationUI
      * @return the menu number (between 1 and max menu item number) provided by the user.
      * @throws InputMismatchException if user enters an invalid number/menu choice
      */
-    private int showMenu() throws InputMismatchException 
-    {
+    private int showMenu() throws InputMismatchException {
         System.out.println("\n**** Application v0.1 ****\n");
         // Display the menu
-        for ( String menuItem : menuItems )
-        {
+        for ( String menuItem : menuItems ) {
             System.out.println(menuItem);
         }
         int maxMenuItemNumber = menuItems.length + 1;
         // Add the "Exit"-choice to the menu
         System.out.println(maxMenuItemNumber + ". Exit\n");
         System.out.println("Please choose menu item (1-" + maxMenuItemNumber + "): ");
-        // Read input from user
-        Scanner reader = new Scanner(System.in);
+        // Read input from user        
         int menuSelection = reader.nextInt();
         if ((menuSelection < 1) || (menuSelection > maxMenuItemNumber)) 
         {
@@ -105,28 +105,27 @@ public class ApplicationUI
         }
         return menuSelection;
     }
-    
+
     // ------ The methods below this line are "helper"-methods, used from the menu ----
-    // ------ All these methods are made privat, since they are only used by the menu ---
-    
-    /**
-     * Initializes the application.
-     * Typically you would create the LiteratureRegistrer-instance here
-     */
-    private void init()
-    {
-        System.out.println("init() was called");
-    }
+    // ------ All these methods are made private, since they are only used by the menu ---
 
     /**
      * Lists all the products/literature in the register
      */
-    void listAllProducts()
-    {
-        System.out.println("listAllProducts() was called");
+    void listAllProducts() {
+        String bookList = bookRegister.listAllBooks();
+        
+        if(!bookRegister.getRegister().isEmpty()) 
+        {
+            System.out.println("\nThe books you have:");
+            System.out.println(bookList);
+        }
+        else 
+        {
+            System.out.println("There are no books in the register");
+        }
     }
 
-    
     /**
      * Add a new product/literature to the register.
      * In this method you have to add code to ask the
@@ -137,12 +136,33 @@ public class ApplicationUI
      * Remember to also handle invalid input from the
      * user!!
      */
-    void addNewProduct()
-    {
-        System.out.println("addNewProduct() was called");
-        
-    }
+    void addNewProduct() {
+        System.out.println("Enter the title of the book");
+        String userInput = reader.next();
+        String newTitle = userInput;
 
+        System.out.println("Enter the genre of the book");
+        userInput = reader.next();
+        String newGenre = userInput;
+
+        System.out.println("Enter the author of the book");
+        userInput = reader.next();
+        String newAuthor = userInput;
+
+        bookRegister.add(new Book(newTitle, newGenre, newAuthor));
+        System.out.println("Book registered succesufuly");
+    }
+    
+    /*
+     * 
+     */
+    /*void removeExistingProduct() {
+        System.out.println("Enter the title of the book you want to remove");
+        String userInput = reader.next();
+        Book removeBook = userInput;
+        bookRegister.remove(userInput);
+    }*/
+    
     /**
      * Find and display a product based om name (title).
      * As with the addNewProduct()-method, you have to
@@ -152,9 +172,9 @@ public class ApplicationUI
      * Then, upon return from the register, you need
      * to print the details of the found item.
      */
-    void findProductByName()
-    {
-        System.out.println("findProductByName() was called");
+    void findProductByName() {
+        System.out.println("Enter the title of the book you want to look for");
+        String userInput = reader.next();
+        System.out.println(bookRegister.searchByName(userInput));
     }
-    
 }

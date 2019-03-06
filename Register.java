@@ -18,56 +18,73 @@ public class Register
         this.bookRegister = new ArrayList<>();
     }
 
+    /*
+     * @return bookRegister as an arraylist
+     */
+    public ArrayList<Book> getRegister() {
+        return bookRegister;
+    }
+
     /**
      * @param bookName add the book to the book register (ArrayList).
      */
-    public void addBook(Book bookName) {
+    public void add(Book bookName) {
         bookRegister.add(bookName);
     }
-    
+
     /**
      * @param bookName remove the book from the book register (ArrayList).
      */
-    public void removeBook(Book bookName) {
+    public void remove(Book bookName) {
         bookRegister.remove(bookName);
     }
-    
+
     /**
      * List all books in the book register on the terminal.
      */
-    public void listAllBooks() {
-        int index = 0;
-        
-        System.out.println("The books you have:");
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            System.out.println(book.getBookTitle());
-            index++;
+    public String listAllBooks() {
+        String bookList = "";
+
+        for(Book book: bookRegister) {
+            bookList = bookList + book.getBookTitle() + "\n";
         }
+        return bookList;
     }
-    
+
     /**
      * @param bookName put in the name of the book you want to find from the array list "bookRegister".
      * List all books that contains the name you sent in.
      */
-    public void searchOnBook(String bookName) {
-        int index = 0;
+    public String searchByName(String bookName) {
         boolean foundBook = false;
-        
-        while(index < bookRegister.size()) {
-            Book book = bookRegister.get(index);
-            
+        String booksFound = "";
+
+        for(Book book: bookRegister) {
             if(book.getBookTitle().contains(bookName)) {
-                System.out.println("The book title is: " + book.getBookTitle() + ". The book genre is: " + book.getGenre() + ". The book author is: " + book.getAuthor());
                 foundBook = true;
+                booksFound = booksFound + (
+                "The book title is: " + book.getBookTitle() 
+                + ". The book genre is: " + book.getGenre() 
+                + ". The book author is: " + book.getAuthor())
+                + "\n";
             }
-            
-            index++;
         }
-        
-        if((index == bookRegister.size()) && (foundBook == false)){
-                System.out.println("No book with the name: " + bookName + " found.");
-            }
+
+        if(!foundBook) {
+            booksFound = "No book with the name: " + bookName + " found.";
+        }
+        return booksFound;       
+    }
+
+    public void generateTestBooks() {
+        Book book1 = new Book("Hello World!", "Comedy", "Alan Turing");
+        Book book2 = new Book("Kua sier Møø", "Horror", "Harry Potter");
+        Book book3 = new Book("Runescape wiki", "Non-Fiction", "Everyone");
+        Book book4 = new Book("Hello my little friend", "Science fiction", "Lisa Simpson");
+
+        add(book1);
+        add(book2);
+        add(book3);
+        add(book4);
     }
 }
-
